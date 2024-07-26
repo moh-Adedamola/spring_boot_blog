@@ -1,6 +1,7 @@
 package com.semicolon.africa.blog.service.impl;
 
 import com.semicolon.africa.blog.data.model.Post;
+import com.semicolon.africa.blog.dto.PostRequest;
 import com.semicolon.africa.blog.repo.Posts;
 import com.semicolon.africa.blog.service.PostServices;
 import org.junit.jupiter.api.AfterAll;
@@ -27,14 +28,20 @@ class PostServicesImplTest {
 
     @Test
     void addPost() {
-        Post post =postServices.addPost("title", "content");
+        PostRequest postRequest = new PostRequest();
+        postRequest.setTitle("Title");
+        postRequest.setContent("Content");
+        Post post =postServices.addPost(postRequest);
         assertThat(post.getId()).isNotNull();
     }
 
 
     @Test
     void updatePost() {
-        Post post =postServices.addPost("title", "content");
+        PostRequest postRequest = new PostRequest();
+        postRequest.setTitle("Title");
+        postRequest.setContent("Content");
+        Post post =postServices.addPost(postRequest);
         postServices.updatePost(post.getId(),"newTitle","newContent");
         assertThat(posts.findPostById(post.getId())).isNotNull();
         assertThat(posts.findPostById(post.getId()).getTitle()).isEqualTo("newTitle");
@@ -44,7 +51,10 @@ class PostServicesImplTest {
 
     @Test
     void deletePost() {
-        Post post =postServices.addPost("title", "content");
+        PostRequest postRequest = new PostRequest();
+        postRequest.setTitle("Title");
+        postRequest.setContent("Content");
+        Post post =postServices.addPost(postRequest);
         postServices.deletePost(post.getId());
         assertThat(posts.findPostById(post.getId())).isNull();
     }
@@ -54,7 +64,10 @@ class PostServicesImplTest {
 
     @Test
     void getAllPosts() {
-       postServices.addPost("title", "content");
+        PostRequest postRequest = new PostRequest();
+        postRequest.setTitle("Title");
+        postRequest.setContent("Content");
+        Post post =postServices.addPost(postRequest);
        assertThat(postServices.getAllPosts()).hasSize(1);
     }
 

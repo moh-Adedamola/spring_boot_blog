@@ -1,6 +1,7 @@
 package com.semicolon.africa.blog.service.impl;
 
 import com.semicolon.africa.blog.data.model.Post;
+import com.semicolon.africa.blog.dto.PostRequest;
 import com.semicolon.africa.blog.repo.Posts;
 import com.semicolon.africa.blog.service.PostServices;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +15,10 @@ import java.util.Optional;
 public class PostServicesImpl implements PostServices {
     private final Posts posts;
     @Override
-    public Post addPost(String title, String content) {
+    public Post addPost(PostRequest postRequest) {
         Post post = new Post();
-        post.setTitle(title);
-        post.setContent(content);
+        post.setTitle(postRequest.getTitle());
+        post.setContent(postRequest.getContent());
         return posts.save(post);
     }
 

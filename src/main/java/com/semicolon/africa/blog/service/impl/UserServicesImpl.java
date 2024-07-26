@@ -52,8 +52,9 @@ public class UserServicesImpl implements UserServices {
     }
 
     @Override
-    public CommentResponse deleteComment(CommentRequest commentRequest) {
-        return null;
+    public DeleteCommentResponse deleteComment(DeleteCommentRequest commentRequest) {
+           comments.delete(comments.findCommentById(commentRequest.getCommentId()));
+           return DeleteCommentResponse.builder().message("comment don delete oga").build();
     }
 
     @Override

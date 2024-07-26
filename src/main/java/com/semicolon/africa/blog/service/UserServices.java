@@ -4,8 +4,8 @@ import com.semicolon.africa.blog.data.model.Post;
 import com.semicolon.africa.blog.dto.*;
 
 public interface UserServices {
- UserResponse signUp(UserRequest userRequest);
+UserResponse signUp(UserRequest userRequest);
 CommentResponse commentToPost(CommentRequest commentRequest);
-CommentResponse deleteComment(CommentRequest commentRequest);
+DeleteCommentResponse deleteComment(DeleteCommentRequest commentRequest);
 SharePostResponse shareAPost (SharePostRequest sharePostRequest);
 }
